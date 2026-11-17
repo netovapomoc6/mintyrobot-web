@@ -1,0 +1,125 @@
+{
+ "Fraunces_300Light_Italic": {
+  "local": [
+   "Times New Roman",
+   "Liberation Serif",
+   "Times",
+   "Noto Serif"
+  ],
+  "size": 103.69,
+  "ascent": 94.32,
+  "descent": 24.59,
+  "lineGap": 0.0
+ },
+ "Fraunces_400Regular": {
+  "local": [
+   "Times New Roman",
+   "Liberation Serif",
+   "Times",
+   "Noto Serif"
+  ],
+  "size": 113.95,
+  "ascent": 85.83,
+  "descent": 22.38,
+  "lineGap": 0.0
+ },
+ "Fraunces_600SemiBold": {
+  "local": [
+   "Times New Roman",
+   "Liberation Serif",
+   "Times",
+   "Noto Serif"
+  ],
+  "size": 117.5,
+  "ascent": 83.24,
+  "descent": 21.7,
+  "lineGap": 0.0
+ },
+ "GeistMono_500Medium": {
+  "local": [
+   "Courier New",
+   "Liberation Mono",
+   "Courier",
+   "Droid Sans Mono"
+  ],
+  "size": 99.98,
+  "ascent": 100.52,
+  "descent": 29.5,
+  "lineGap": 0.0
+ },
+ "GeistMono_600SemiBold": {
+  "local": [
+   "Courier New",
+   "Liberation Mono",
+   "Courier",
+   "Droid Sans Mono"
+  ],
+  "size": 99.98,
+  "ascent": 100.52,
+  "descent": 29.5,
+  "lineGap": 0.0
+ },
+ "Manrope_400Regular": {
+  "local": [
+   "Arial",
+   "Liberation Sans",
+   "Helvetica",
+   "Roboto"
+  ],
+  "size": 101.75,
+  "ascent": 104.77,
+  "descent": 29.48,
+  "lineGap": 0.0
+ },
+ "Manrope_500Medium": {
+  "local": [
+   "Arial",
+   "Liberation Sans",
+   "Helvetica",
+   "Roboto"
+  ],
+  "size": 103.6,
+  "ascent": 102.9,
+  "descent": 28.96,
+  "lineGap": 0.0
+ },
+ "Manrope_600SemiBold": {
+  "local": [
+   "Arial Bold",
+   "Arial-BoldMT",
+   "Liberation Sans Bold",
+   "Helvetica Bold",
+   "Roboto Bold"
+  ],
+  "size": 98.44,
+  "ascent": 108.29,
+  "descent": 30.47,
+  "lineGap": 0.0
+ },
+ "Manrope_700Bold": {
+  "local": [
+   "Arial Bold",
+   "Arial-BoldMT",
+   "Liberation Sans Bold",
+   "Helvetica Bold",
+   "Roboto Bold"
+  ],
+  "size": 100.15,
+  "ascent": 106.44,
+  "descent": 29.96,
+  "lineGap": 0.0
+ },
+ "Manrope_800ExtraBold": {
+  "local": [
+   "Arial Bold",
+   "Arial-BoldMT",
+   "Liberation Sans Bold",
+   "Helvetica Bold",
+   "Roboto Bold"
+  ],
+  "size": 101.88,
+  "ascent": 104.64,
+  "descent": 29.45,
+  "lineGap": 0.0
+ }
+}
