@@ -23,7 +23,7 @@
         flex: 1;
       }
     </style>
-  <link rel="icon" href="/favicon.ico"/><script>(function(){if(location.pathname!=='/')return;var w=window.innerWidth>=900;var l=document.createElement('link');l.rel='preload';l.as='image';l.href=w?'/hero/aika-hero-v1-1600.webp':'/hero/aika-hero-v1-m.webp';l.setAttribute('fetchpriority','high');document.head.appendChild(l)})();</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  <link rel="icon" href="/favicon.ico"/><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
 window.mrLoadGa=function(){window['ga-disable-G-P94LMB7QLD']=false;gtag('consent','update',{analytics_storage:'granted'});if(window.mrGaLoaded)return;window.mrGaLoaded=true;
 var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-P94LMB7QLD';document.head.appendChild(s);
@@ -58,7 +58,7 @@ d.onclick=function(){choose('denied')};a.onclick=function(){choose('granted')};b
 function init(){var s=el('style');s.textContent=css;document.head.appendChild(s);var v=get();if(v==='granted'||v==='denied')reopenBtn();else show()}
 window.mrCookieSettings=function(){var r=document.getElementById('mr-cc-r');if(r)r.parentNode.removeChild(r);show()};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();</script></head>
+})();</script><link rel="preload" as="image" href="/hero/aika-hero-v1-m.webp" media="(max-width: 899.98px)" fetchpriority="high"><link rel="preload" as="image" href="/hero/aika-hero-v1-1600.webp" media="(min-width: 900px)" fetchpriority="high"><style id="mr-hero-css">#mr-hero{position:fixed;inset:0;z-index:5;background:#061A1C;pointer-events:none;overflow:hidden}#mr-hero .b{position:absolute;left:0;right:0;top:0;height:calc(min(100vw,620px)*.9 + 61px);overflow:hidden}#mr-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;display:block}#mr-hero .t{position:absolute;left:0;right:0;top:0;height:110px;background:linear-gradient(rgba(6,26,28,.7),rgba(6,26,28,0))}#mr-hero .d{position:absolute;left:0;right:0;bottom:0;height:48%;background:linear-gradient(rgba(6,26,28,0),rgba(6,26,28,.55) 50%,#061A1C)}#mr-hero .l{display:none}@media (min-width:900px){#mr-hero .b{height:clamp(684px,100vh,924px)}#mr-hero img{object-position:72% 45%}#mr-hero .l{display:block;position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,26,28,.96),rgba(6,26,28,.86) 34%,rgba(6,26,28,.55) 50%,rgba(6,26,28,0) 70%)}#mr-hero .t{height:130px;background:linear-gradient(rgba(6,26,28,.6),rgba(6,26,28,0))}#mr-hero .d{height:28%;background:linear-gradient(rgba(6,26,28,0),#061A1C)}}</style></head>
 
   <body>
     <!-- Use static rendering with Expo Router to support running without JavaScript. -->
@@ -66,7 +66,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
       You need to enable JavaScript to run this app.
     </noscript>
     <!-- The root element for your Expo app. -->
-    <div id="root"></div>
-  <script src="/_expo/static/js/web/entry-727e4409357454debca9d2c512ad10d7.js" defer></script>
+    <div id="root"></div><div id="mr-hero" aria-hidden="true"><div class="b"><picture><source media="(min-width: 900px)" srcset="/hero/aika-hero-v1-1600.webp" width="1600" height="900"><img src="/hero/aika-hero-v1-m.webp" width="720" height="648" alt="" fetchpriority="high" decoding="sync"></picture><div class="l"></div><div class="t"></div><div class="d"></div></div></div><script>(function(){var s=document.getElementById('mr-hero');if(!s)return;function rm(){if(s&&s.parentNode){s.parentNode.removeChild(s);var c=document.getElementById('mr-hero-css');if(c)c.parentNode.removeChild(c)}s=null}if(location.pathname!=='/'){rm();return}var root=document.getElementById('root'),done=false;function chk(){if(done)return;var i=root.querySelector('img[src^="/hero/aika-hero-"]');if(!i)return;done=true;mo.disconnect();var f=function(){requestAnimationFrame(function(){requestAnimationFrame(rm)})};if(i.complete)f();else{i.addEventListener('load',f);i.addEventListener('error',rm)}}var mo=new MutationObserver(chk);mo.observe(root,{childList:true,subtree:true});setTimeout(rm,20000)})();</script>
+  <script>(function(){var u="/_expo/static/js/web/entry-727e4409357454debca9d2c512ad10d7.js",g=false;function go(){if(g)return;g=true;var s=document.createElement('script');s.src=u;document.body.appendChild(s)}var h=document.getElementById('mr-hero'),i=h&&h.querySelector('img');if(!i){go();return}var f=function(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})};if(i.complete)f();else{i.addEventListener('load',f);i.addEventListener('error',go)}setTimeout(go,3000)})();</script>
 </body>
 </html>
