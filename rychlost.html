@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Rýchlosť webu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="font" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+:root{--bg:#ECF3E8;--card:#FFFFFF;--ink:#0A1607;--body:#3E4A3C;--muted:#6F7D6E;--line:#D3E2CB;--head:#102A25;--headink:#FFFFFF;--accent:#96DB3E;--accentink:#0A1607;--link:#0C7A38;--good:#0C9E47;--mid:#D97A06;--bad:#D3302F;--youbg:#EFF8E6;
+--fd:'Space Grotesk',system-ui,sans-serif;--fb:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+body.minty{--bg:#061A1C;--card:#0B2A2D;--ink:#ECF4F1;--body:#C3D6D1;--muted:#86A5A0;--line:#11393C;--head:#0B2A2D;--headink:#ECF4F1;--accent:#2BD4B4;--accentink:#061A1C;--link:#2BD4B4;--good:#2BD4B4;--mid:#F5A524;--bad:#FF6B6B;--youbg:#0F3A37;
+--fd:'Manrope',system-ui,sans-serif;--fb:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.55;padding:20px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.brand{background:var(--head);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--line)}
+.brand .n{color:var(--accent);font-family:var(--fd);font-weight:800;font-size:20px}
+.brand .a{color:var(--headink);font-size:13px;opacity:.85}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+h1{font-family:var(--fd);font-size:30px;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--fd);font-size:21px;margin:0;text-wrap:balance}
+h3{margin:0;font-size:16px;overflow-wrap:anywhere}
+p{margin:0;color:var(--body);max-width:62ch}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.shot img{display:block;width:100%;height:auto}
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sc{border:1px solid var(--line);border-radius:10px;padding:10px 6px;text-align:center}
+.sc .v{font-family:var(--fd);font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.sc .l{font-size:12px;color:var(--muted)}
+.g{color:var(--good)}.o{color:var(--mid)}.r{color:var(--bad)}
+.verify{font-size:14px;color:var(--body)} .verify a{color:var(--link);font-weight:600}
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.comp.one{grid-template-columns:1fr}
+.comp .card{padding:16px;gap:10px}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:center}
+th:first-child,td:first-child{text-align:left;overflow-wrap:anywhere}
+tr.you td{font-weight:700;background:var(--youbg)}
+.legend{font-size:13px;color:var(--muted)}
+.cta{background:var(--head);border:1px solid var(--line);color:var(--headink);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.cta h2{color:var(--headink)} .cta p{color:var(--headink);opacity:.85}
+.btn{display:inline-block;align-self:flex-start;background:var(--accent);color:var(--accentink);font-weight:700;padding:12px 18px;border-radius:999px;text-decoration:none}
+.err{padding:40px 0;text-align:center;color:var(--body)}
+@media (max-width:560px){.comp{grid-template-columns:1fr}.scores{grid-template-columns:repeat(2,1fr)}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="err">Načítavam…</div></div>
+<script>
+var DATA = /*__DATA__*/null;
+(function(){
+  var q = new URLSearchParams(location.search);
+  function go(d){ render(d); }
+  if (DATA) return go(DATA);
+  var t = q.get('t') || '';
+  fetch('https://netovapomoc.app.n8n.cloud/webhook/klient-rychlost?format=json&t=' + encodeURIComponent(t))
+    .then(function(r){ return r.json(); }).then(go)
+    .catch(function(){ go({ ok:false }); });
+})();
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function cls(v){ return v == null ? '' : (v >= 90 ? 'g' : (v >= 50 ? 'o' : 'r')); }
+function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch(e){ return u || ''; } }
+function render(d){
+  var app = document.getElementById('app');
+  var minty = d && d.znacka === 'minty';
+  if (minty) { document.body.className = 'minty'; document.getElementById('font').href = 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap'; }
+  var CZ = d && d.jazyk === 'CZ';
+  document.documentElement.lang = CZ ? 'cs' : 'sk';
+  var T = CZ ? {
+    load:'Výsledek se nepodařilo načíst. Zkuste to prosím později.', ey:'Měření Google PageSpeed · mobil',
+    h1k:'Váš nový web je rychlejší než weby konkurence', h1kc:function(m){ return 'Váš nový web je rychlejší než weby konkurence v lokalitě ' + m; },
+    h1s:'Váš nový web je rychlejší než ten původní', h1n:'Váš nový web je v zelených číslech',
+    lede:'Před předáním jsme Váš web změřili v nástroji od Googlu. Níže jsou skutečné výsledky přímo z Googlu. Každý si můžete jedním klikem ověřit sami.',
+    ledek:' Stejný test jsme spustili i na webech firem ve Vašem okolí.', ledes:' Pro srovnání jsme změřili i Váš původní web.',
+    you:'Váš web', old:'Původní web', konk:'Weby ve Vašem okolí', konkh:function(o,m){ return 'Jak jsou na tom ' + (o || 'firmy') + (m ? ' – ' + m : ''); },
+    konkp:'Vybrali jsme známé firmy z Map Google ve Vašem okolí. Jde o stejné stránky, které vidí Vaši zákazníci, když hledají Vaše služby.',
+    over:'Ověřte si sami:', overl:'výsledek v Google PageSpeed', overk:'Ověřit v Google',
+    k:['Rychlost','Přístupnost','Osvědčené postupy','SEO'], web:'Web',
+    leg:'Google hodnotí od 0 do 100 bodů. Výsledek 90–100 je zelený (dobrý), 50–89 oranžový (ke zlepšení), pod 50 červený. Rychlé weby Google upřednostňuje ve vyhledávání a návštěvníci z nich méně odcházejí.',
+    trial:'Web je zatím ve zkušební verzi a skrytý před vyhledávači, proto porovnáváme hlavně rychlost. SEO zapneme po zveřejnění.',
+    cta:'Udělali jsme Vám radost?', ctap:'Budeme moc rádi, když nám věnujete minutu a ohodnotíte naši spolupráci.', ctab:'Ohodnotit spolupráci',
+    ctam:'Chcete si web ponechat?', ctamp:'Zkušební verze běží jen omezenou dobu. Aktivujte si předplatné a web zveřejníme na Vaší doméně.', ctamb:'Ponechat si web',
+    noshot:'Snímek obrazovky se nepodařilo pořídit – výsledek si můžete ověřit odkazem.' , dt:'Měřeno'
+  } : {
+    load:'Výsledok sa nepodarilo načítať. Skúste to prosím neskôr.', ey:'Meranie Google PageSpeed · mobil',
+    h1k:'Váš nový web je rýchlejší ako weby konkurencie', h1kc:function(m){ return 'Váš nový web je rýchlejší ako weby konkurencie v lokalite ' + m; },
+    h1s:'Váš nový web je rýchlejší ako ten pôvodný', h1n:'Váš nový web je v zelených číslach',
+    lede:'Pred odovzdaním sme Váš web zmerali v nástroji od Googlu. Nižšie sú skutočné výsledky priamo z Googlu. Každý si môžete jedným klikom overiť sami.',
+    ledek:' Ten istý test sme spustili aj na weboch firiem vo Vašom okolí.', ledes:' Na porovnanie sme zmerali aj Váš pôvodný web.',
+    you:'Váš web', old:'Pôvodný web', konk:'Weby vo Vašom okolí', konkh:function(o,m){ return 'Ako na tom sú ' + (o || 'firmy') + (m ? ' – ' + m : ''); },
+    konkp:'Vybrali sme známe firmy z Google Máp vo Vašom okolí. Ide o tie isté stránky, ktoré vidia Vaši zákazníci, keď hľadajú Vaše služby.',
+    over:'Overte si sami:', overl:'výsledok v Google PageSpeed', overk:'Overiť v Google',
+    k:['Rýchlosť','Prístupnosť','Osvedčené postupy','SEO'], web:'Web',
+    leg:'Google hodnotí od 0 do 100 bodov. Výsledok 90–100 je zelený (dobrý), 50–89 oranžový (treba zlepšiť), pod 50 červený. Rýchle weby Google uprednostňuje vo vyhľadávaní a návštevníci z nich menej odchádzajú.',
+    trial:'Web je zatiaľ v skúšobnej verzii a skrytý pred vyhľadávačmi, preto porovnávame hlavne rýchlosť. SEO zapneme po zverejnení.',
+    cta:'Urobili sme Vám radosť?', ctap:'Budeme veľmi radi, keď nám venujete minútu a ohodnotíte našu spoluprácu.', ctab:'Ohodnotiť spoluprácu',
+    ctam:'Chcete si web ponechať?', ctamp:'Skúšobná verzia beží len obmedzený čas. Aktivujte si predplatné a web zverejníme na Vašej doméne.', ctamb:'Ponechať si web',
+    noshot:'Screenshot sa nepodarilo urobiť – výsledok si overíte odkazom.', dt:'Merané'
+  };
+  if (!d || !d.ok || !d.nas) { app.innerHTML = '<div class="err">' + T.load + '</div>'; return; }
+  var KEYS = ['performance','accessibility','best-practices','seo'];
+  var trial = d.rezim === 'rychlost';
+  function scores(s){ return '<div class="scores">' + KEYS.map(function(k,i){ var v = (s||{})[k]; return '<div class="sc"><div class="v ' + cls(v) + '">' + (v == null ? '–' : v) + '</div><div class="l">' + T.k[i] + '</div></div>'; }).join('') + '</div>'; }
+  function shot(o, alt){ return o.obrazok ? '<div class="shot"><img loading="lazy" alt="' + esc(alt) + '" src="' + esc(o.obrazok) + '"></div>' : '<p class="legend">' + T.noshot + '</p>'; }
+  var others = d.porovnanie || [];
+  var variant = d.variant || (others.length ? 'konkurencia' : 'len_nas');
+  var brandName = minty ? 'MintyRobot' : 'Netová pomoc';
+  var h = '';
+  h += '<div class="brand"><span class="n">' + brandName + '</span><span class="a">' + (minty ? 'mintyrobot.com' : 'AI asistentka Aika') + '</span></div>';
+  var h1 = variant === 'konkurencia' ? (d.mesto ? T.h1kc(esc(d.mesto)) : T.h1k) : (variant === 'stary' ? T.h1s : T.h1n);
+  h += '<div class="card"><span class="eyebrow">' + T.ey + (d.datum ? ' · ' + T.dt + ' ' + esc(d.datum) : '') + '</span><h1>' + h1 + '</h1><p>' + T.lede + (variant === 'konkurencia' ? T.ledek : (variant === 'stary' ? T.ledes : '')) + '</p>' + (trial ? '<p class="legend">' + T.trial + '</p>' : '') + '</div>';
+  h += '<div class="card"><span class="eyebrow">' + T.you + '</span><h2>' + esc(host(d.nas.url)) + '</h2>' + shot(d.nas, T.you) + scores(d.nas.skore) + (d.nas.overit ? '<div class="verify">' + T.over + ' <a href="' + esc(d.nas.overit) + '" target="_blank" rel="noopener">' + T.overl + '</a></div>' : '') + '</div>';
+  if (others.length) {
+    h += '<div class="card"><span class="eyebrow">' + (variant === 'stary' ? T.old : T.konk) + '</span>';
+    if (variant === 'konkurencia') h += '<h2>' + T.konkh(esc(d.odbor_mn || ''), esc(d.mesto || '')) + '</h2><p>' + T.konkp + '</p>';
+    h += '<div class="comp' + (others.length === 1 ? ' one' : '') + '">' + others.map(function(o){ return '<div class="card"><h3>' + esc(o.nazov || host(o.url)) + '</h3>' + shot(o, o.nazov || host(o.url)) + (o.overit ? '<div class="verify"><a href="' + esc(o.overit) + '" target="_blank" rel="noopener">' + T.overk + '</a></div>' : '') + '</div>'; }).join('') + '</div>';
+    var rows = [{ n: T.you, s: d.nas.skore, you: true }].concat(others.map(function(o){ return { n: (variant === 'stary' ? T.old + ' (' + host(o.url) + ')' : (o.nazov || host(o.url))), s: o.skore }; }));
+    h += '<div class="tbl"><table><thead><tr><th>' + T.web + '</th>' + T.k.map(function(k){ return '<th>' + k + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.map(function(r){ return '<tr' + (r.you ? ' class="you"' : '') + '><td>' + esc(r.n) + '</td>' + KEYS.map(function(k){ var v = (r.s||{})[k]; return '<td class="' + cls(v) + '">' + (v == null ? '–' : v) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+    h += '<p class="legend">' + T.leg + '</p></div>';
+  } else {
+    h += '<div class="card"><p class="legend">' + T.leg + '</p></div>';
+  }
+  if (minty && d.cta_url) h += '<div class="cta"><h2>' + T.ctam + '</h2><p>' + T.ctamp + '</p><a class="btn" href="' + esc(d.cta_url) + '" target="_blank" rel="noopener">' + T.ctamb + '</a></div>';
+  else if (d.hodnotenie_url) h += '<div class="cta"><h2>' + T.cta + '</h2><p>' + T.ctap + '</p><a class="btn" href="' + esc(d.hodnotenie_url) + '" target="_blank" rel="noopener">' + T.ctab + '</a></div>';
+  app.innerHTML = h;
+}
+</script>
+</body>
+</html>
